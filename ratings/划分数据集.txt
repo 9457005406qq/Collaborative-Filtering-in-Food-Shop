@@ -1,0 +1,20 @@
+import pandas as pd
+from sklearn.model_selection import train_test_split
+import numpy as np
+#np.set_printoptions(suppress=True)
+ratings = "C:/Users/jun/Desktop/ratings/ratings.csv"
+df=pd.read_csv(ratings)
+Y=df.rating.values
+X=df.drop(['rating_env','rating_flavor','rating_service','timestamp','comment'],axis=1).values
+# X_train, X_test, y_train, y_test = train_test_split(X, Y, test_size=0.3, random_state=42)
+# np.savetxt('13.csv', X_train, delimiter = ',')
+# np.savetxt('14.csv', X_test, delimiter = ',')
+n_train=int(len(df)*0.8)
+X_train=X[:n_train]
+Y_train=Y[:n_train]
+X_test=X[n_train:]
+Y_test=Y[n_train:]
+# print(df.dtypes)
+# print("jieshu")
+np.savetxt('15.csv', X_train, delimiter = ',')
+np.savetxt('16.csv', X_test, delimiter = ',')
